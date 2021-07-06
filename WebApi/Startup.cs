@@ -5,7 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Sigmade.Application;
 using Sigmade.Domain;
+using Sigmade.WebApi.Extensions;
 
 namespace Sigmade.WebApi
 {
@@ -27,6 +29,7 @@ namespace Sigmade.WebApi
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddMediatorHandlers(ApplicationLayerAssemblyPointer.Pointer.Assembly);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
