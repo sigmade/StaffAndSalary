@@ -1,6 +1,6 @@
 ﻿namespace Sigmade.Domain.Identity
 {
-    public static class Roles
+    public static class RolesConstants
     {
         public const string Root = "Root";
         public const string Admin = "Admin";
